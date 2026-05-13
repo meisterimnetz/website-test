@@ -46,6 +46,91 @@
 - **Spacing:** Use intentional, consistent spacing tokens — not random Tailwind steps.
 - **Depth:** Surfaces should have a layering system (base → elevated → floating), not all sit at the same z-plane.
 
+## SEO — Automatically Applied to Every Page
+Every HTML page must include all of the following without being asked.
+
+### `<head>` Meta Tags
+```html
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>[Keyword-reicher Titel] | [Firmenname] – [Ort]</title>
+<meta name="description" content="[150–160 Zeichen, enthält Hauptkeyword + Ort + CTA]">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://[domain]/[page]">
+
+<!-- Open Graph (Social Sharing) -->
+<meta property="og:title" content="...">
+<meta property="og:description" content="...">
+<meta property="og:type" content="website">
+<meta property="og:url" content="...">
+<meta property="og:image" content="...">
+
+<!-- Geo (Local SEO) -->
+<meta name="geo.region" content="DE-[Bundesland]">
+<meta name="geo.placename" content="[Ort]">
+```
+
+### Heading Hierarchy (per page)
+- Exactly **one `<h1>`** per page — contains the primary keyword + city
+- `<h2>` for main sections (Leistungen, Über uns, Kontakt)
+- `<h3>` for sub-items within sections
+- Never skip heading levels (h1 → h3 without h2)
+- Example for a craftsperson: `<h1>Dachdecker in Osnabrück – Reparatur & Neubau | Meier Bedachungen</h1>`
+
+### Semantic HTML Structure
+```html
+<header> — Logo, Navigation
+<main>
+  <section aria-label="Hero"> — H1 here
+  <section aria-label="Leistungen"> — H2 here
+  <section aria-label="Über uns">
+  <section aria-label="Bewertungen">
+  <section aria-label="Kontakt">
+</main>
+<footer> — Adresse, Links, Copyright
+```
+
+### Images
+- Every `<img>` needs a descriptive `alt` attribute with keyword: `alt="Dachdecker bei der Arbeit in Osnabrück"`
+- Use `loading="lazy"` on all images below the fold
+- Hero image: `loading="eager"` and `fetchpriority="high"`
+
+### LocalBusiness Schema (JSON-LD)
+Add to every page inside `<head>` — critical for local craftspeople Google ranking:
+```html
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "[Firmenname]",
+  "description": "[Kurzbeschreibung]",
+  "url": "https://[domain]",
+  "telephone": "[Telefonnummer]",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "[Straße]",
+    "addressLocality": "[Ort]",
+    "postalCode": "[PLZ]",
+    "addressCountry": "DE"
+  },
+  "areaServed": "[Einzugsgebiet]",
+  "priceRange": "€€",
+  "openingHours": "Mo-Fr 07:00-18:00"
+}
+</script>
+```
+
+### Performance (affects Google ranking)
+- Inline critical CSS — no external stylesheets that block rendering
+- Fonts via `<link rel="preconnect">` + `display=swap`
+- No unused JavaScript on page load
+- Images: use correct dimensions, never scale down large images via CSS
+
+### Internal Linking
+- Every subpage links back to the homepage
+- Footer contains links to all main pages
+- Service subpages link to the contact page with a clear CTA
+
 ## Hard Rules
 - Do not add sections, features, or content not in the reference
 - Do not "improve" a reference design — match it
