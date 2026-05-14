@@ -138,6 +138,13 @@ Add to every page inside `<head>` — critical for local craftspeople Google ran
 - Do not use `transition-all`
 - Do not use default Tailwind blue/indigo as primary color
 
+## Datenschutzerklärung
+- Die Datenschutzerklärung muss folgenden Hinweis zu Netlify enthalten:
+  > „Diese Website wird über Netlify (Netlify, Inc., San Francisco, USA) gehostet. Beim Aufruf der Website können Verbindungsdaten an Server in den USA übertragen werden. Netlify ist gemäß dem EU-US Data Privacy Framework zertifiziert."
+- Kontaktformulare über Netlify Forms ebenfalls kurz erwähnen:
+  > „Über das Kontaktformular übermittelte Daten werden über Netlify Forms verarbeitet und können vorübergehend auf Servern in den USA gespeichert werden."
+- Kein juristisches Overkill — kurz, verständlich, korrekt.
+
 ## GitHub & Deploy
 - Lokal entwickeln, lokal testen.
 - Erst auf explizite Anweisung ("push to GitHub") committen und pushen.
